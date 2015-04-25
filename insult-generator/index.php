@@ -22,7 +22,7 @@
 			$swear = $swearArray[rand(0, count($swearArray) - 1)];
 			$noun = $nounArray[rand(0, count($nounArray) - 1)];
 			$insult = $swear.$noun;
-			$insult = str_replace('\n', '', $insult);
+			$insult = preg_replace('/\r|\n/', '', $insult);
 			$first = substr($insult, 0, 1);
 			$vowels = array('a', 'e', 'i', 'o', 'u');
 			if (in_array($first, $vowels)) $an = true;
