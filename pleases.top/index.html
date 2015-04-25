@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Please Stop.</title>
+		<style>
+			#stop {
+				font-size: 108pt;
+				font-family: Lato, Calibri, Arial, sans-serif;
+				text-align: center;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		</style>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<link rel="stylesheet"	type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300">
+	</head>
+	<body>
+		<div id="stop">
+			Please Stop.
+		</div>
+		<script>
+			$(document).ready(function() {
+				function centerText() {
+					$('#stop').css('margin-top', ($(document).height() - $('#stop').height()) / 2 * 0.9); 
+				};
+
+				centerText();	
+
+				$(window).resize(function() {
+					centerText();
+				});
+			});
+		</script>
+	</body>
+</html>
