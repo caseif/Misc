@@ -75,7 +75,7 @@ else
 }
 
 </style>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript" src="http://apis.google.com/js/plusone.js"></script>
 <script>
 var seconds = 0;
