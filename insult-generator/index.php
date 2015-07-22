@@ -11,7 +11,6 @@
 				margin-right: auto;
 			}
 		</style>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<link rel="stylesheet"	type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300">
 	</head>
 	<body>
@@ -32,15 +31,27 @@
 			?>
 		</div>
 		<script>
-			$(document).ready(function() {
+			function docHeight() {
+				// from https://stackoverflow.com/questions/1145850/
+				var body = document.body,
+						html = document.documentElement;
+				return Math.max(body.scrollHeight, body.offsetHeight, 
+						html.clientHeight, html.scrollHeight, html.offsetHeight);
+			}
+
+			window.addEventListener('DOMContentLoaded', function() {
+                var elementId = 'insult';
 				function centerText() {
-					$('#insult').css('margin-top', ($(document).height() - $('#insult').height()) / 2 * 0.9); 
-				};
+					document.getElementById(elementId).style.marginTop =
+							((docHeight() - document.getElementById(elementId).offsetHeight) / 2 * 0.9) + 'px';
+				}
+
 				centerText();	
-				$(window).resize(function() {
+
+				window.addEventListener('resize', function() {
 					centerText();
-				});
-			});
+				}, false);
+			}, false);
 		</script>
 	</body>
 </html>
