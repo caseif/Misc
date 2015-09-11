@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Statistical Analysis Utility</title>
+        <script>
+            var values;
+
+            var mean;
+            var stdDev;
+
+            var median;
+            var lowExtreme;
+            var highExtreme;
+            var lowQuartile;
+            var highQuartile;
+
+            var mode;
+
+            // utility functions
+            function isNumeric(n) {
+                return !isNaN(parseFloat(n)) && isFinite(n);
+            }
+
+            function getMedian(data) {
+                return data.length % 2 == 1
+                        ? data[Math.floor(data.length / 2)]
+                        : (data[Math.floor(data.length / 2 - 1)] + data[Math.floor(data.length / 2)]) / 2;
+            }
+
+            // analysis functions
+            function calcMean() {
+                var sum = 0;
+                values.forEach(function (v) {
+                    sum += v;
+                });
+                mean = sum / values.length;
+            }
+
+            function calcStdDev() {
+                var sum = 0;
+                values.forEach(function (v) {
+                    sum += Math.pow(v - mean, 2);
+                });
+                stdDev = Math.sqrt(sum / (values.length - 1));
+            }
+
+            function calcMedian() {
+                median = getMedian(values);
+            }
+
+            function calcLowerQuartile() {
+                lowQuartile = getMedian(values.slice(0, Math.floor((values.length + 1) / 2)));
+            }
+
+            function calcUpperQuartile() {
+                highQuartile = getMedian(values.slice(Math.floor(values.length / 2)));
+            }
+
+            function calcValues() {
+                calcMean();
+                calcStdDev();
+                calcMedian();
+                calcLowerQuartile();
+                calcUpperQuartile();
+            }
+
+            // main function
+            function submitData() {
+                var valueText = document.forms["data-form"]["value-text"].value;
+                if (valueText == null || valueText == "") {
+                    alert("You must supply a data set");
+                    return false;
+                }
+                var protoValues = valueText.replace("[ ]+", "").split(" ");
+                values = [];
+                for (var i = 0; i < protoValues.length; i++) {
+                    var v = protoValues[i];
+                    if (isNumeric(v)) {
+                        values[i] = parseFloat(v);
+                    } else {
+                        alert("Cannot parse value '" + v + "' as float");
+                        return false;
+                    }
+                }
+                values.sort();
+                calcValues();
+                document.getElementById("analysis").innerHTML =
+                        "<b>Mean:</b> " + mean + "<br>" +
+                        "<b>Standard Deviation:</b> " + stdDev + "<br>" +
+                        "<br><br>" +
+                        "<b>Median:</b> " + median + "<br>" +
+                        "<b>Lower Quartile:</b> " + lowQuartile + "<br>" +
+                        "<b>Upper Quartile:</b> " + highQuartile + "<br>";
+                return false;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Statistical Analysis Utiity</h1>
+        <p>Enter your data set below as space-separated values (e.g. 1 2 3 4 5).</p>
+        <form name="data-form" method="post" action="" onsubmit="return submitData()">
+            <table>
+                <tr><td><textarea name="value-text" rows=6 cols=40 required autofocus></textarea></td></tr>
+                <tr><td><input type="submit" name="submit-button" value="Analyze"></td></tr>
+            </table>
+        </form>
+        <br>
+        <div id="analysis"></div>
+    </body>
+</html>
