@@ -10,10 +10,12 @@
             var stdDev;
 
             var median;
-            var lowExtreme;
-            var highExtreme;
             var lowQuartile;
             var highQuartile;
+            var lowExtreme;
+            var highExtreme;
+
+            var outliers;
 
             var mode;
 
@@ -26,6 +28,11 @@
                 return data.length % 2 == 1
                         ? data[Math.floor(data.length / 2)]
                         : (data[Math.floor(data.length / 2 - 1)] + data[Math.floor(data.length / 2)]) / 2;
+            }
+
+            function isOutlier(value) {
+                var tolerance = 1.5 * (highQuartile - lowQuartile);
+                return value < lowQuartile - tolerance || value > highQuartile + tolerance;
             }
 
             // analysis functions
@@ -57,12 +64,28 @@
                 highQuartile = getMedian(values.slice(Math.floor(values.length / 2)));
             }
 
+            function calcExtremes() {
+                outliers = [];
+                var foundLow = false;
+                values.forEach(function (v) {
+                    if (isOutlier(v)) {
+                        outliers.push(v);
+                    } else if (foundLow) {
+                            highExtreme = v;
+                    } else {
+                        lowExtreme = v;
+                        foundLow = true;
+                    }
+                });
+            }
+
             function calcValues() {
                 calcMean();
                 calcStdDev();
                 calcMedian();
                 calcLowerQuartile();
                 calcUpperQuartile();
+                calcExtremes();
             }
 
             // main function
@@ -72,33 +95,37 @@
                     alert("You must supply a data set");
                     return false;
                 }
-                var protoValues = valueText.replace("[ ]+", "").split(" ");
+                var protoValues = valueText.replace(/,/g, " ").replace(/ +(?= )/g, "").split(" ");
                 values = [];
                 for (var i = 0; i < protoValues.length; i++) {
                     var v = protoValues[i];
                     if (isNumeric(v)) {
                         values[i] = parseFloat(v);
                     } else {
-                        alert("Cannot parse value '" + v + "' as float");
+                        alert("Cannot parse value '" + v + "' as a float");
                         return false;
                     }
                 }
-                values.sort();
+                values.sort(function(a, b){return a - b;}); // let's talk about JavaScript
                 calcValues();
                 document.getElementById("analysis").innerHTML =
                         "<b>Mean:</b> " + mean + "<br>" +
                         "<b>Standard Deviation:</b> " + stdDev + "<br>" +
-                        "<br><br>" +
+                        "<br>" +
                         "<b>Median:</b> " + median + "<br>" +
                         "<b>Lower Quartile:</b> " + lowQuartile + "<br>" +
-                        "<b>Upper Quartile:</b> " + highQuartile + "<br>";
+                        "<b>Upper Quartile:</b> " + highQuartile + "<br>" +
+                        "<b>Lower Extreme:</b> " + lowExtreme + "<br>" +
+                        "<b>Upper Extreme:</b> " + highExtreme + "<br>" +
+                        "<br>" +
+                        "<b>Outliers:</b> " + outliers.join(", ");
                 return false;
             }
         </script>
     </head>
     <body>
         <h1>Statistical Analysis Utiity</h1>
-        <p>Enter your data set below as space-separated values (e.g. 1 2 3 4 5).</p>
+        <p>Enter your data set below as space- or comma-separated values (e.g. "1 2 3 4 5" or "1,2,3,4,5").</p>
         <form name="data-form" method="post" action="" onsubmit="return submitData()">
             <table>
                 <tr><td><textarea name="value-text" rows=6 cols=40 required autofocus></textarea></td></tr>
