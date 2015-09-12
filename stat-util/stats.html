@@ -95,7 +95,7 @@
                     alert("You must supply a data set");
                     return false;
                 }
-                var protoValues = valueText.replace(/,/g, " ").replace(/ +(?= )/g, "").split(" ");
+                var protoValues = valueText.replace(/,/g, " ").replace(/\s+/g, " ").split(" ");
                 values = [];
                 for (var i = 0; i < protoValues.length; i++) {
                     var v = protoValues[i];
