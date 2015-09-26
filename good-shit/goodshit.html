@@ -38,6 +38,10 @@
                         .replace(/%e3/g, emoji3)
                         .replace(/%e4/g, emoji4);
                 document.getElementById("output").innerHTML = modifiedPasta;
+                // not a bug, it's a workaround for Chromoji
+                setTimeout(function () {
+                    document.getElementById("output").innerHTML = modifiedPasta;
+                }, 1);
                 return false;
             }
         </script>
