@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>"Good Shit" Copypasta Generator</title>
+        <script>
+            var pasta = "%e1%e2%e1%e2%e1%e2%e1%e2%e1%e2 %a %b %a %b%e1 thats %e3 %c %a%e1%e1%b right%e1%e1there%e1%e1%e1 right%e3there %e3%e3if i do ƽaү so my self %e4 i say so %e4 thats what im talking about right there right there (chorus: ʳᶦᵍʰᵗ ᵗʰᵉʳᵉ) mMMMMᎷМ%e4 %e1%e1 %e1НO0ОଠOOOOOОଠଠOoooᵒᵒᵒᵒᵒᵒᵒᵒᵒ%e1 %e1%e1 %e1 %e4 %e1 %e2 %e2 %e2 %e1%e1%a2 %b";
+            function submitData() {
+                var firstWord = document.forms["data-form"]["first-word"].value;
+                var secondWord = document.forms["data-form"]["second-word"].value;
+                
+                var article = document.forms["data-form"]["article"].value;
+                
+                var emoji1 = document.forms["data-form"]["emoji1"].value;
+                emoji1 = emoji1 != null && emoji1 != "" ? emoji1 : "👌";
+                
+                var emoji2 = document.forms["data-form"]["emoji2"].value;
+                emoji2 = emoji2 != null && emoji2 != "" ? emoji2 : "👀";
+                
+                var emoji3 = document.forms["data-form"]["emoji3"].value;
+                emoji3 = emoji3 != null && emoji3 != "" ? emoji3 : "✔";
+                
+                var emoji4 = document.forms["data-form"]["emoji4"].value;
+                emoji4 = emoji4 != null && emoji4 != "" ? emoji4 : "💯";
+                
+                if (firstWord == null || firstWord == "" || secondWord == null || secondWord == "") {
+                    alert("You must fill in both words!");
+                    return false;
+                }
+                
+                var modifiedPasta = pasta
+                        .replace(/\%a2/g, firstWord.charAt(0).toUpperCase() + firstWord.slice(1))
+                        .replace(/\%a/g, firstWord.toLowerCase())
+                        .replace(/\%b/g, secondWord.toLowerCase())
+                        .replace(/%c/g, article)
+                        .replace(/%e1/g, emoji1)
+                        .replace(/%e2/g, emoji2)
+                        .replace(/%e3/g, emoji3)
+                        .replace(/%e4/g, emoji4);
+                document.getElementById("output").innerHTML = modifiedPasta;
+                return false;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>"Good Shit" Copypasta Generator</h1>
+        <form name="data-form" method="post" action="" onsubmit="return submitData()">
+            <table>
+                <tr>
+                    <td><b>First word</b></td>
+                    <td><input type="text" name="first-word" placeholder="good" required autofocus></td>
+                </tr>
+                <tr>
+                    <td><b>Second word</b></td>
+                    <td><input type="text" name="second-word" placeholder="shit" required></td>
+                </tr>
+                <tr>
+                    <td><b>Article</b></td>
+                    <td><select name="article"><option value="some">some</option><option value="a">a</option></select></td>
+                </tr>
+                <tr>
+                    <td><b>Emoji #1</b></td>
+                    <td><input type="text" name="emoji1" value="👌" placeholder="👌" required></td>
+                </tr>
+                <tr>
+                    <td><b>Emoji #2</b></td>
+                    <td><input type="text" name="emoji2" value="👀" placeholder="👀" required></td>
+                </tr>
+                <tr>
+                    <td><b>Emoji #3</b></td>
+                    <td><input type="text" name="emoji3" value="✔" placeholder="✔" required></td>
+                </tr>
+                <tr>
+                    <td><b>Emoji #4</b></td>
+                    <td><input type="text" name="emoji4" value="💯" placeholder="💯" required></td>
+                </tr>
+                <tr><td><input type="submit" name="submit" value="Generate"></td></tr>
+            </table>
+        </form>
+        <div><textarea id="output" rows=7 cols=60 readonly></textarea></div>
+    </body>
+</html>
