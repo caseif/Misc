@@ -11,7 +11,7 @@
 				margin-right: auto;
 			}
 		</style>
-		<link rel="stylesheet"	type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300">
+		<link rel="stylesheet"	type="text/css" href="https://fonts.googleapis.com/css?family=Lato:300">
 	</head>
 	<body>
 		<div id="insult">
