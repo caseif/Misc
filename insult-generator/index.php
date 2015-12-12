@@ -10,6 +10,13 @@
 				margin-left: auto;
 				margin-right: auto;
 			}
+            #gh {
+                font-family: monospace;
+                font-size: 14pt;
+                position: absolute;
+                bottom: 5px;
+                right: 7px;
+            }
 		</style>
 		<link rel="stylesheet"	type="text/css" href="https://fonts.googleapis.com/css?family=Lato:300">
 	</head>
@@ -30,6 +37,9 @@
 			echo $insult;
 			?>
 		</div>
+        <div id="gh">
+            <a href="https://github.com/caseif/Misc/tree/master/insult-generator" target="_blank">Github</a>
+        </div>
 		<script>
 			function docHeight() {
 				// from https://stackoverflow.com/questions/1145850/
