@@ -5,4 +5,4 @@ I actually didn't even write most of this. It's primarily ~~stolen~~ derived fro
 
 Also, I am quite surprised that Windows actually lets me use ( ͡° ͜ʖ ͡°) as a file name.
 
-See it in action [here](http://caseif.net/lenny.html).
+See it in action [here](https://blog.caseif.net/lenny.html).
