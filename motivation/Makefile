@@ -1,0 +1,1 @@
+g++ motivation.cpp -o motivation.exe -mwindows
