@@ -1,1 +1,2 @@
-g++ motivation.cpp -o motivation.exe -mwindows
+motivation:
+	g++ -Wall motivation.cpp -o motivation.exe -mwindows
