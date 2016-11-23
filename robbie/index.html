@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>We Are Number One!</title>
+	<link rel="icon" type="image/jpeg" href="robbie.jpg">
+	<meta property="og:image" content="robbie.jpg" />
+	<meta property="og:type" content="website" />
+	<meta property='og:url' content="https://robbie.caseif.net/" />
+	<meta property='og:title' content="The Mighty Robbie Rotten" />
+	<meta property='og:description' content="We Are Number One!" />
+	<style>
+	.robbie {
+		position: fixed;
+		display: block;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		transition: 30s;
+		outline: none;
+		margin-top: -10%;
+	}
+
+	.timer {
+		bottom: 0;
+		right: 5px;
+		position: fixed;
+		color: white;
+	}
+
+	.socials {
+		bottom: 0;
+		left: 0;
+		position: fixed;
+		font-size: 1px;
+	}
+
+	.twitter-share-button {
+		padding-top: 3px;
+		padding-bottom: 3px;
+	}
+
+	.socials iframe {
+		vertical-align: middle;
+	}
+
+	.socials span {
+		display: inline-block;
+	}
+
+	</style>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+	<script>
+	var seconds = 0;
+	window.onready = setTimeout(function tick(){
+		seconds++;
+		$(".timer").html("You've been worshipping for " + seconds + " seconds");
+		setTimeout(tick, 1000);
+	}, 1000);
+	
+	window.onload = function zoomIn(){
+		//document.getElementById("music").volume = 0.5;
+		console.log("Zooming in");
+		$(".robbie").css("width", "400%");
+		$(".robbie").css("margin-left", "-65%");
+		$(".robbie").css("margin-top", "-60%");
+		setTimeout(
+			function zoomOut(){
+				console.log("Zooming out");
+				$(".robbie").css("width", "100%");
+				$(".robbie").css("margin-left", "0%");
+				$(".robbie").css("margin-top", "-10%");
+				setTimeout(zoomIn, 30000);
+			}, 30000
+		);
+	}
+	</script>
+</head>
+<body>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<img class="robbie" src="robbie.jpg" alt="The Mighty Robbie Rotten">
+	<audio id="music" hidden autoplay loop>
+		<source src="sax.mp3" type="audio/mpeg">
+		<embed src="sax.mp3" hidden>
+	</audio>
+	<div class="timer">You've been worshipping for 0 seconds</div>
+	<div class="socials">
+	<span class="fb-like" data-href="https://robbie.caseif.net/" data-send="true" data-action="like" data-share="false" data-layout="button_count" data-width="50" data-show-faces="false" data-font="arial"></span>
+	<br>
+	<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-url="https://robbie.caseif.net/" data-text="I just worshipped our Lord and Savior, #RobbieRotten!">Tweet</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	<br>
+	<span class="g-plusone" data-size="standard" data-href="https://robbie.caseif.net/" />
+	</div>
+</body>
+</html>

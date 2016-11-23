@@ -12,11 +12,10 @@ if ($rick == 1)
 else
 	echo "<title>All Hail Gaben</title>";
 ?>
-<link rel="icon" type="image/png" href="https://gaben.amigocraft.net/images/gabenicon.png">
-<meta property="og:image" content="https://gaben.amigocraft.net/images/gaben.jpg" />
+<link rel="icon" type="image/png" href="https://gaben.caseif.net/images/gabenicon.png">
+<meta property="og:image" content="https://gaben.caseif.net/images/gaben.jpg" />
 <meta property="og:type" content="website" />
-<meta property="fb:admins" content="100000997811607" />
-<meta property='og:url' content="https://gaben.amigocraft.net/" />
+<meta property='og:url' content="https://gaben.caseif.net/" />
 <meta property='og:title' content="All Hail Gaben" />
 <meta property='og:description' content="Hail to our Lord!" />
 <style>
@@ -165,7 +164,7 @@ function back(){
 }(document, 'script', 'facebook-jssdk'));</script>
 <?php
 if ($rick == 1)
-	echo '<img class="rick" src="http://rick.amigocraft.net/rick.jpg" alt="The Mighty Rick Astley">';
+	echo '<img class="rick" src="https://rick.caseif.net/rick.jpg" alt="The Mighty Rick Astley">';
 else if ($i == 1)
 	echo '<img class="gaben" src="images/gaben1.jpg" alt="The Mighty Gaben">';
 elseif ($i == 2)
@@ -181,8 +180,8 @@ else
 if ($rick == 1){
 ?>
 <audio id="music" hidden autoplay loop>
-	<source src="http://rick.amigocraft.net/rick.mp3" type="audio/mpeg">
-	<embed src="http://rick.amigocraft.net/rick/rick.mp3" hidden>
+	<source src="https://rick.caseif.net/rick.mp3" type="audio/mpeg">
+	<embed src="https://rick.caseif.net/rick/rick.mp3" hidden>
 </audio>
 <?php
 } else {
@@ -203,12 +202,18 @@ if (date("n").' '.date("j") == "4 1" || isset($_GET['rick'])){
 }
 ?>
 <div class="socials">
-<span class="fb-like" data-href="https://gaben.amigocraft.net/" data-send="true" data-action="like" data-share="false" data-layout="button_count" data-width="50" data-show-faces="false" data-font="arial"></span>
+<span class="fb-like" data-href="https://gaben.caseif.net/" data-send="true" data-action="like" data-share="false" data-layout="button_count" data-width="50" data-show-faces="false" data-font="arial"></span>
 <br>
-<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-url="https://gaben.amigocraft.net" data-text="I just worshipped our Lord and Savior, #<?php echo $rick == 1 ? "RickAstley" : "Gaben"; ?>!">Tweet</a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-url="https://gaben.caseif.net" data-text="I just worshipped our Lord and Savior, #<?php echo $rick == 1 ? "RickAstley" : "Gaben"; ?>!">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 <br>
-<span class="g-plusone" data-size="standard" data-href="http://gaben.amigocraft.net/" />
+<span class="g-plusone" data-size="standard" data-href="https://gaben.caseif.net/" />
 </div>
 </body>
 </html>
+<?php
+//include('connect.php'); // simple mysql_connect() call
+//$link->select_db('gaben');
+//$link->prepare('INSERT INTO access (ip, time) VALUES ("'.$_SERVER['REMOTE_ADDR'].'", "'.time().'")')->execute();
+//$link->close();
+?>
