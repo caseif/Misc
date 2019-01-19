@@ -1,2 +1,2 @@
 all:
-	g++ woodo.cpp -o woodo
+	gcc woodo.c -o woodo
